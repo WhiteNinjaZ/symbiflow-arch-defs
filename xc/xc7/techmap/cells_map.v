@@ -5288,6 +5288,184 @@ output [15:0] DO
 endmodule
 
 // ============================================================================
+module MMCME2_BASE
+(
+input         CLKFBIN,
+input         CLKIN1,
+input         PWRDWN,
+input         RST,
+
+output        CLKFBOUT,
+output        CLKFBOUTB,
+output        CLKOUT0,
+output        CLKOUT0B,
+output        CLKOUT1,
+output        CLKOUT1B,
+output        CLKOUT2,
+output        CLKOUT2B,
+output        CLKOUT3,
+output        CLKOUT3B,
+output        CLKOUT4,
+output        CLKOUT5,
+output        CLKOUT6,
+
+output        LOCKED
+);
+
+
+  parameter BANDWIDTH = "OPTIMIZED";
+  parameter STARTUP_WAIT = "FALSE";
+
+  parameter CLKIN1_PERIOD = 0.0;////
+  parameter REF_JITTER1 = 0.01;////
+  parameter CLKIN2_PERIOD = 0.0;
+  parameter REF_JITTER2 = 0.01;
+
+  parameter [5:0] DIVCLK_DIVIDE = 1;////
+
+  parameter CLKFBOUT_MULT_F = 5000;////
+  parameter signed [31:0] CLKFBOUT_PHASE = 0;////
+  parameter CLKFBOUT_USE_FINE_PS = "FALSE";
+/////////////////////////////////////////////////////////
+  parameter CLKOUT0_DIVIDE_F = 1000;////
+  parameter CLKOUT0_DUTY_CYCLE = 50000;////
+  parameter signed [31:0] CLKOUT0_PHASE = 0;////
+  parameter CLKOUT0_USE_FINE_PS = "FALSE";
+
+  parameter CLKOUT1_DIVIDE = 1;////
+  parameter CLKOUT1_DUTY_CYCLE = 50000;////
+  parameter signed [31:0] CLKOUT1_PHASE = 0;////
+  parameter CLKOUT1_USE_FINE_PS = "FALSE";
+
+  parameter CLKOUT2_DIVIDE = 1;////
+  parameter CLKOUT2_DUTY_CYCLE = 50000;////
+  parameter signed [31:0] CLKOUT2_PHASE = 0;////
+  parameter CLKOUT2_USE_FINE_PS = "FALSE";
+
+  parameter CLKOUT3_DIVIDE = 1;////
+  parameter CLKOUT3_DUTY_CYCLE = 50000;////
+  parameter signed [31:0] CLKOUT3_PHASE = 0;////
+  parameter CLKOUT3_USE_FINE_PS = "FALSE";
+
+  parameter CLKOUT4_DIVIDE = 1;////
+  parameter CLKOUT4_DUTY_CYCLE = 50000;////
+  parameter signed [31:0] CLKOUT4_PHASE = 0;////
+  parameter CLKOUT4_USE_FINE_PS = "FALSE";
+
+  parameter CLKOUT5_DIVIDE = 1;////
+  parameter CLKOUT5_DUTY_CYCLE = 50000;////
+  parameter signed [31:0] CLKOUT5_PHASE = 0;////
+  parameter CLKOUT5_USE_FINE_PS = "FALSE";
+
+  parameter CLKOUT6_DIVIDE = 1;////
+  parameter CLKOUT6_DUTY_CYCLE = 50000;////
+  parameter signed [31:0] CLKOUT6_PHASE = 0;////
+  parameter CLKOUT6_USE_FINE_PS = "FALSE";
+
+  parameter CLKOUT4_CASCADE = 0;////
+
+  parameter SS_EN   = "FALSE";
+  parameter SS_MODE = "CENTER_HIGH";
+  parameter SS_MOD_PERIOD = 10000;
+
+
+  MMCME2_ADV #
+  (
+  .IS_CLKINSEL_INVERTED(1'b0),
+  .IS_RST_INVERTED(1'b0),
+  .IS_PWRDWN_INVERTED(1'b0),
+  .IS_PSEN_INVERTED(1'b0),
+  .IS_PSINCDEC_INVERTED(1'b0),
+
+  .BANDWIDTH(BANDWIDTH),
+  .STARTUP_WAIT(STARTUP_WAIT),
+  .COMPENSATION("INTERNAL"); ///////////////////////////////Check and tripple check this ////////////////////////////
+
+  .CLKIN1_PERIOD(CLKIN1_PERIOD),
+  .REF_JITTER1(REF_JITTER1),
+  .CLKIN2_PERIOD(0.0),
+  .REF_JITTER2(0.01),
+
+  .DIVCLK_DIVIDE(DIVCLK_DIVIDE),
+
+  .CLKFBOUT_MULT_F(CLKFBOUT_MULT_F),
+  .CLKFBOUT_PHASE(CLKFBOUT_PHASE),
+  .CLKFBOUT_USE_FINE_PS("FALSE"),
+  
+  .CLKOUT0_DIVIDE_F(CLKOUT0_DIVIDE_F),
+  .CLKOUT0_DUTY_CYCLE(CLKOUT0_DUTY_CYCLE),
+  .CLKOUT0_PHASE(CLKOUT0_PHASE),
+  .CLKOUT0_USE_FINE_PS("FALSE"),
+
+  parameter CLKOUT1_DIVIDE = 1;////
+  parameter CLKOUT1_DUTY_CYCLE = 50000;////
+  parameter signed [31:0] CLKOUT1_PHASE = 0;////
+  parameter CLKOUT1_USE_FINE_PS = "FALSE";
+
+  parameter CLKOUT2_DIVIDE = 1;////
+  parameter CLKOUT2_DUTY_CYCLE = 50000;////
+  parameter signed [31:0] CLKOUT2_PHASE = 0;////
+  parameter CLKOUT2_USE_FINE_PS = "FALSE";
+
+  parameter CLKOUT3_DIVIDE = 1;////
+  parameter CLKOUT3_DUTY_CYCLE = 50000;////
+  parameter signed [31:0] CLKOUT3_PHASE = 0;////
+  parameter CLKOUT3_USE_FINE_PS = "FALSE";
+
+  parameter CLKOUT4_DIVIDE = 1;////
+  parameter CLKOUT4_DUTY_CYCLE = 50000;////
+  parameter signed [31:0] CLKOUT4_PHASE = 0;////
+  parameter CLKOUT4_USE_FINE_PS = "FALSE";
+
+  parameter CLKOUT5_DIVIDE = 1;////
+  parameter CLKOUT5_DUTY_CYCLE = 50000;////
+  parameter signed [31:0] CLKOUT5_PHASE = 0;////
+  parameter CLKOUT5_USE_FINE_PS = "FALSE";
+
+  parameter CLKOUT6_DIVIDE = 1;////
+  parameter CLKOUT6_DUTY_CYCLE = 50000;////
+  parameter signed [31:0] CLKOUT6_PHASE = 0;////
+  parameter CLKOUT6_USE_FINE_PS = "FALSE";
+
+  parameter CLKOUT4_CASCADE = 0;////
+
+  parameter SS_EN   = "FALSE";
+  parameter SS_MODE = "CENTER_HIGH";
+  parameter SS_MOD_PERIOD = 10000;
+
+  )
+  _TECHMAP_REPLACE_
+  (
+
+    /////////////////////////////////////////////////////Undone///////////////////////////////////////////////
+  .CLKFBIN(CLKFBIN),
+  .CLKIN1(CLKIN1),
+  .CLKINSEL(1'b1),
+
+  .CLKFBOUT(CLKFBOUT),
+  .CLKOUT0(CLKOUT0),
+  .CLKOUT1(CLKOUT1),
+  .CLKOUT2(CLKOUT2),
+  .CLKOUT3(CLKOUT3),
+  .CLKOUT4(CLKOUT4),
+  .CLKOUT5(CLKOUT5),
+
+  .PWRDWN(PWRDWN),
+  .RST(RST),
+  .LOCKED(LOCKED),
+
+  .DCLK(1'b0),
+  .DEN(1'b0),
+  .DWE(1'b0),
+  .DRDY(),
+  .DADDR(7'd0),
+  .DI(16'd0),
+  .DO()
+  );
+
+endmodule
+
+// ============================================================================
 
 module INV(
     output O,
