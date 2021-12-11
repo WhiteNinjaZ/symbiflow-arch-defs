@@ -5379,7 +5379,7 @@ output        LOCKED
 
   .BANDWIDTH(BANDWIDTH),
   .STARTUP_WAIT(STARTUP_WAIT),
-  .COMPENSATION("INTERNAL"); ///////////////////////////////Check and tripple check this ////////////////////////////
+  .COMPENSATION("INTERNAL"); 
 
   .CLKIN1_PERIOD(CLKIN1_PERIOD),
   .REF_JITTER1(REF_JITTER1),
@@ -5397,70 +5397,110 @@ output        LOCKED
   .CLKOUT0_PHASE(CLKOUT0_PHASE),
   .CLKOUT0_USE_FINE_PS("FALSE"),
 
-  parameter CLKOUT1_DIVIDE = 1;////
-  parameter CLKOUT1_DUTY_CYCLE = 50000;////
-  parameter signed [31:0] CLKOUT1_PHASE = 0;////
-  parameter CLKOUT1_USE_FINE_PS = "FALSE";
+  .CLKOUT1_DIVIDE(CLKOUT1_DIVIDE);
+  .CLKOUT1_DUTY_CYCLE(CLKOUT1_DUTY_CYCLE);
+  .CLKOUT1_PHASE(CLKOUT1_PHASE);
+  .CLKOUT1_USE_FINE_PS("FALSE");
 
-  parameter CLKOUT2_DIVIDE = 1;////
-  parameter CLKOUT2_DUTY_CYCLE = 50000;////
-  parameter signed [31:0] CLKOUT2_PHASE = 0;////
-  parameter CLKOUT2_USE_FINE_PS = "FALSE";
+  .CLKOUT2_DIVIDE(CLKOUT2_DIVIDE);
+  .CLKOUT2_DUTY_CYCLE(CLKOUT2_DUTY_CYCLE);
+  .CLKOUT2_PHASE(CLKOUT2_PHASE);
+  .CLKOUT2_USE_FINE_PS("FALSE");
 
-  parameter CLKOUT3_DIVIDE = 1;////
-  parameter CLKOUT3_DUTY_CYCLE = 50000;////
-  parameter signed [31:0] CLKOUT3_PHASE = 0;////
-  parameter CLKOUT3_USE_FINE_PS = "FALSE";
+  .CLKOUT3_DIVIDE(CLKOUT3_DIVIDE);
+  .CLKOUT3_DUTY_CYCLE(CLKOUT3_DUTY_CYCLE);
+  .CLKOUT3_PHASE(CLKOUT3_PHASE);
+  .CLKOUT3_USE_FINE_PS("FALSE");
 
-  parameter CLKOUT4_DIVIDE = 1;////
-  parameter CLKOUT4_DUTY_CYCLE = 50000;////
-  parameter signed [31:0] CLKOUT4_PHASE = 0;////
-  parameter CLKOUT4_USE_FINE_PS = "FALSE";
+  .CLKOUT4_DIVIDE(CLKOUT4_DIVIDE);
+  .CLKOUT4_DUTY_CYCLE(CLKOUT4_DUTY_CYCLE);
+  .CLKOUT4_PHASE(CLKOUT4_PHASE);
+  .CLKOUT4_USE_FINE_PS("FALSE");
 
-  parameter CLKOUT5_DIVIDE = 1;////
-  parameter CLKOUT5_DUTY_CYCLE = 50000;////
-  parameter signed [31:0] CLKOUT5_PHASE = 0;////
-  parameter CLKOUT5_USE_FINE_PS = "FALSE";
+  .CLKOUT5_DIVIDE(CLKOUT5_DIVIDE);
+  .CLKOUT5_DUTY_CYCLE(CLKOUT5_DUTY_CYCLE);
+  .CLKOUT5_PHASE(CLKOUT5_PHASE);
+  .CLKOUT5_USE_FINE_PS("FALSE");
 
-  parameter CLKOUT6_DIVIDE = 1;////
-  parameter CLKOUT6_DUTY_CYCLE = 50000;////
-  parameter signed [31:0] CLKOUT6_PHASE = 0;////
-  parameter CLKOUT6_USE_FINE_PS = "FALSE";
+  .CLKOUT6_DIVIDE(CLKOUT6_DIVIDE);
+  .CLKOUT6_DUTY_CYCLE(CLKOUT6_DUTY_CYCLE);
+  .CLKOUT6_PHASE(CLKOUT6_PHASE);
+  .CLKOUT6_USE_FINE_PS("FALSE");
 
-  parameter CLKOUT4_CASCADE = 0;////
+  .CLKOUT4_CASCADE(CLKOUT4_CASCADE);
 
-  parameter SS_EN   = "FALSE";
-  parameter SS_MODE = "CENTER_HIGH";
-  parameter SS_MOD_PERIOD = 10000;
+  .SS_EN("FALSE");
+  .SS_MODE("CENTER_HIGH");
+  .SS_MOD_PERIOD(10000);
 
   )
   _TECHMAP_REPLACE_
   (
+  .CLKFBIN      (CLKFBIN),
+  .CLKIN1       (CLKIN1),
+  .CLKINSEL     (1'b1),
 
-    /////////////////////////////////////////////////////Undone///////////////////////////////////////////////
-  .CLKFBIN(CLKFBIN),
-  .CLKIN1(CLKIN1),
-  .CLKINSEL(1'b1),
+  .CLKFBOUT     (CLKFBOUT), 
+  .CLKFBOUTB    (CLKFBOUTB),
+  .CLKOUT0      (CLKOUT0),
+  .CLKOUT0B     (CLKOUT0B),
+  .CLKOUT1      (CLKOUT1),
+  .CLKOUT1B     (CLKOUT1B),
+  .CLKOUT2      (CLKOUT2),
+  .CLKOUT2B     (CLKOUT2B),
+  .CLKOUT3      (CLKOUT3),
+  .CLKOUT3B     (CLKOUT3B),
+  .CLKOUT4      (CLKOUT4),
+  .CLKOUT5      (CLKOUT5),
+  .CLKOUT6      (CLKOUT6),
 
-  .CLKFBOUT(CLKFBOUT),
-  .CLKOUT0(CLKOUT0),
-  .CLKOUT1(CLKOUT1),
-  .CLKOUT2(CLKOUT2),
-  .CLKOUT3(CLKOUT3),
-  .CLKOUT4(CLKOUT4),
-  .CLKOUT5(CLKOUT5),
+  .PWRDWN       (PWRDWN),
+  .RST          (RST),
+  .LOCKED       (LOCKED),
 
-  .PWRDWN(PWRDWN),
-  .RST(RST),
-  .LOCKED(LOCKED),
-
-  .DCLK(1'b0),
-  .DEN(1'b0),
-  .DWE(1'b0),
-  .DRDY(),
-  .DADDR(7'd0),
-  .DI(16'd0),
-  .DO()
+  .DCLK         (1'b0),
+  .DEN          (1'b0),
+  .DWE          (1'b0),
+  .DRDY         (),
+  .DADDR0       (1'b0),
+  .DADDR1       (1'b0),
+  .DADDR2       (1'b0),
+  .DADDR3       (1'b0),
+  .DADDR4       (1'b0),
+  .DADDR5       (1'b0),
+  .DADDR6       (1'b0),
+  .DI0          (1'b0),
+  .DI1          (1'b0),
+  .DI2          (1'b0),
+  .DI3          (1'b0),
+  .DI4          (1'b0),
+  .DI5          (1'b0),
+  .DI6          (1'b0),
+  .DI7          (1'b0),
+  .DI8          (1'b0),
+  .DI9          (1'b0),
+  .DI10         (1'b0),
+  .DI11         (1'b0),
+  .DI12         (1'b0),
+  .DI13         (1'b0),
+  .DI14         (1'b0),
+  .DI15         (1'b0),
+  .DO0          (),
+  .DO1          (),
+  .DO2          (),
+  .DO3          (),
+  .DO4          (),
+  .DO5          (),
+  .DO6          (),
+  .DO7          (),
+  .DO8          (),
+  .DO9          (),
+  .DO10         (),
+  .DO11         (),
+  .DO12         (),
+  .DO13         (),
+  .DO14         (),
+  .DO15         ()
   );
 
 endmodule
